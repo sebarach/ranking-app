@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ranking-app/static/css/main.aee7f678.css",
+    "main.js": "/ranking-app/static/js/main.b5e5275c.js",
+    "static/js/453.f24eefab.chunk.js": "/ranking-app/static/js/453.f24eefab.chunk.js",
+    "index.html": "/ranking-app/index.html",
+    "main.aee7f678.css.map": "/ranking-app/static/css/main.aee7f678.css.map",
+    "main.b5e5275c.js.map": "/ranking-app/static/js/main.b5e5275c.js.map",
+    "453.f24eefab.chunk.js.map": "/ranking-app/static/js/453.f24eefab.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aee7f678.css",
+    "static/js/main.b5e5275c.js"
+  ]
+}
