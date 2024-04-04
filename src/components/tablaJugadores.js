@@ -5,21 +5,54 @@ import { faBaseball } from "@fortawesome/free-solid-svg-icons";
 function TablaJugadores(props) {
   const { jugadores, partidos } = props;
 
+  const jugadoresOrdenados = jugadores.sort((a, b) => {
+    // Calcula los puntos de cada jugador
+    const puntosA = calcularPuntosJugador(a, partidos);
+    const puntosB = calcularPuntosJugador(b, partidos);
+
+    // Si los puntos son diferentes, ordena según los puntos
+    if (puntosB !== puntosA) {
+      return puntosB - puntosA;
+    }
+
+    // Si tienen los mismos puntos, calcula los sets ganados de cada jugador
+    const setsGanadosA = contarSetsGanados(a.id, partidos);
+    const setsGanadosB = contarSetsGanados(b.id, partidos);
+
+    // Si los sets ganados son diferentes, ordena según los sets ganados
+    if (setsGanadosB !== setsGanadosA) {
+      return setsGanadosB - setsGanadosA;
+    }
+
+    // Si tienen los mismos sets ganados, calcula los juegos ganados de cada jugador
+    const gamesGanadosA = contarJuegosGanados(a.id, partidos);
+    const gamesGanadosB = contarJuegosGanados(b.id, partidos);
+
+    // Ordena según los juegos ganados
+    return gamesGanadosB - gamesGanadosA;
+  });
+
   return (
     <table>
       <thead>
         <tr>
-          <td>Puesto</td>
+          <td>Ranking</td>
           <td>Nombre</td>
           <td>Partidos</td>
           <td>PJ-PG-PP</td>
+          <td>Sets-Games</td>
           <td>Puntos</td>
         </tr>
       </thead>
 
       <tbody>
-        {jugadores.map((jugador, index) => {
-          // Contar partidos ganados por el jugador
+        {jugadoresOrdenados.map((jugador, index) => {
+          const partidosJugados = partidos.filter(
+            (partido) =>
+              partido.jugador1_id === jugador.id ||
+              partido.jugador2_id === jugador.id
+          ).length;
+
           const partidosGanados = partidos.filter(
             (partido) => partido.id_jugador_ganador === jugador.id
           ).length;
@@ -32,7 +65,9 @@ function TablaJugadores(props) {
                 partido.id_jugador_ganador !== jugador.id)
           ).length;
 
-          const puntos = partidosGanados * 7 + partidosPerdidos * 3;
+          const puntos = calcularPuntosJugador(jugador, partidos);
+          const gamesGanados = contarJuegosGanados(jugador.id, partidos);
+          const setsGanados = contarSetsGanados(jugador.id, partidos);
 
           return (
             <tr key={jugador.id}>
@@ -59,7 +94,10 @@ function TablaJugadores(props) {
                 </div>
               </td>
               <td>
-                <span className="status delivered">En contruccion</span>
+                {partidosJugados}/{partidosGanados}/{partidosPerdidos}
+              </td>
+              <td>
+                {setsGanados}/{gamesGanados}
               </td>
               <td>{puntos}</td>
             </tr>
@@ -68,6 +106,60 @@ function TablaJugadores(props) {
       </tbody>
     </table>
   );
+}
+
+function calcularPuntosJugador(jugador, partidos) {
+  const partidosGanados = partidos.filter(
+    (partido) => partido.id_jugador_ganador === jugador.id
+  ).length;
+
+  const partidosPerdidos = partidos.filter(
+    (partido) =>
+      (partido.jugador1_id === jugador.id &&
+        partido.id_jugador_ganador !== jugador.id) ||
+      (partido.jugador2_id === jugador.id &&
+        partido.id_jugador_ganador !== jugador.id)
+  ).length;
+
+  return partidosGanados * 7 + partidosPerdidos * 3;
+}
+
+function contarJuegosGanados(jugadorId, partidos) {
+  let juegosGanados = 0;
+
+  partidos.forEach((partido) => {
+    const [juegosGanadosJugador1, juegosGanadosJugador2] = [
+      Number(partido.juegosGanadosJugador1),
+      Number(partido.juegosGanadosJugador2),
+    ];
+
+    if (partido.jugador1_id === jugadorId) {
+      juegosGanados += juegosGanadosJugador1;
+    } else if (partido.jugador2_id === jugadorId) {
+      juegosGanados += juegosGanadosJugador2;
+    }
+  });
+
+  return juegosGanados;
+}
+
+function contarSetsGanados(jugadorId, partidos) {
+  let setsGanados = 0;
+
+  partidos.forEach((partido) => {
+    const [setGanadosJugador1, setGanadosJugador2] = [
+      Number(partido.setGanadosJugador1),
+      Number(partido.setGanadosJugador2),
+    ];
+
+    if (partido.jugador1_id === jugadorId) {
+      setsGanados += setGanadosJugador1;
+    } else if (partido.jugador2_id === jugadorId) {
+      setsGanados += setGanadosJugador2;
+    }
+  });
+
+  return setsGanados;
 }
 
 export default TablaJugadores;
