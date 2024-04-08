@@ -75,28 +75,7 @@ function App() {
             </div>
           </div>
 
-          <div class="card">
-            <div>
-              <div class="numbers">80</div>
-              <div class="cardName">Vistas</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cart-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">284</div>
-              <div class="cardName">Comentarios</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
-            </div>
-          </div>
-
+{/* 
           <div class="card">
             <div>
               <div class="numbers">$100.000</div>
@@ -107,7 +86,7 @@ function App() {
               <ion-icon name="cash-outline"></ion-icon>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div class="details">
           <div class="recentOrders">
