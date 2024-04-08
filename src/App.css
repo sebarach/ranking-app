@@ -32,7 +32,7 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background: var(--blue);
+  background: #232d3f;
   border-left: 10px solid var(--blue);
   transition: 0.5s;
   overflow: hidden;
@@ -131,6 +131,7 @@ body {
 
 /* ===================== Main ===================== */
 .main {
+  background-color: #232d3f !important;
   position: absolute;
   width: calc(100% - 300px);
   left: 300px;
@@ -273,10 +274,20 @@ body {
   position: relative;
   display: grid;
   min-height: 500px;
-  background: var(--white);
+  background: #232d3f;
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
+  color: white;
+}
+
+table {
+  color: white; /* Establece el color del texto de la tabla en blanco */
+}
+
+table td {
+  border: 1px solid black; /* Añade bordes negros a las celdas de la tabla (opcional) */
+  color: white;
 }
 
 .details .cardHeader {
