@@ -75,7 +75,6 @@ function App() {
             </div>
           </div>
 
-{/* 
           <div class="card">
             <div>
               <div class="numbers">$100.000</div>
@@ -86,7 +85,7 @@ function App() {
               <ion-icon name="cash-outline"></ion-icon>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div class="details">
           <div class="recentOrders">
