@@ -357,7 +357,7 @@ export const Database = [
         juegosGanadosJugador2: "2",
         setGanadosJugador1: "2",
         setGanadosJugador2: "0",
-        fecha: 3,
+        fecha: 2,
         id_jugador_ganador: 1,
       },
       {
