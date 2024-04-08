@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 
 function TablaJugadores(props) {
   const { jugadores, partidos } = props;
-  const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
 
   const handleHistorialClick = (jugadorId) => {
     // Aquí podrías abrir tu modal o hacer cualquier otra acción necesaria
@@ -40,8 +39,6 @@ function TablaJugadores(props) {
     // Ordena según los juegos ganados
     return gamesGanadosB - gamesGanadosA;
   });
-
-  console.log(jugadoresOrdenados);
 
   return (
     <table>
@@ -200,22 +197,24 @@ const buscarPartidosPorJugador = (jugadorId, partidos, jugadores) => {
   // Crear contenido HTML del modal
   const modalContent = (
     <div className="head-to-head-modal">
-      {partidosJugador.map((partido, index) => (
-        <div key={index} className="match">
-          <div className="players">
-            {nombresJugadores[partido.jugador1_id]} vs{" "}
-            {nombresJugadores[partido.jugador2_id]}
+      {partidosJugador
+        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha)) // Ordenar los partidos por fecha
+        .map((partido, index) => (
+          <div key={index} className="match">
+            <div className="players">
+              {nombresJugadores[partido.jugador1_id]} vs{" "}
+              {nombresJugadores[partido.jugador2_id]}
+            </div>
+            <div>Fecha: {partido.fecha}</div>
+            <div>Resultado: {partido.resultado}</div>
+            <div>
+              Ganador:{" "}
+              {partido.id_jugador_ganador
+                ? nombresJugadores[partido.id_jugador_ganador]
+                : "Sin definir"}
+            </div>
           </div>
-          <div>Fecha: {partido.fecha}</div>
-          <div>Resultado: {partido.resultado}</div>
-          <div>
-            Ganador:{" "}
-            {partido.id_jugador_ganador
-              ? nombresJugadores[partido.id_jugador_ganador]
-              : "Sin definir"}
-          </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 
