@@ -478,3 +478,68 @@ table td {
     left: initial;
   }
 }
+
+.custom-btn {
+  display: inline-block;
+  text-align: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+  background-color: #28a745; /* Color verde de btn-success */
+  border-color: #28a745; /* Borde verde de btn-success */
+
+  /* Estilos adicionales para hover */
+  &:hover {
+    color: #fff;
+    background-color: #218838; /* Color de hover de btn-success */
+    border-color: #1e7e34; /* Borde de hover de btn-success */
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); /* Sombra de foco de btn-success */
+  }
+}
+
+td {
+  text-align: center; /* Centra el contenido del td */
+}
+
+.td-Historial {
+  text-align: center !important;
+}
+
+.head-to-head-modal {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.head-to-head-modal h2 {
+  margin-bottom: 20px;
+}
+
+.match {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.match .players {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.match div {
+  margin-bottom: 5px;
+}

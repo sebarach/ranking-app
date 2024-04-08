@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBaseball } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function TablaJugadores(props) {
   const { jugadores, partidos } = props;
+  const [jugadorSeleccionado, setJugadorSeleccionado] = useState(null);
+
+  const handleHistorialClick = (jugadorId) => {
+    // Aquí podrías abrir tu modal o hacer cualquier otra acción necesaria
+    console.log("Historial del jugador con ID:", jugadorId);
+    // Por ahora, solo establecemos el jugador seleccionado en el estado
+    setJugadorSeleccionado(jugadorId);
+  };
 
   const jugadoresOrdenados = jugadores.sort((a, b) => {
     // Calcula los puntos de cada jugador
@@ -27,10 +37,11 @@ function TablaJugadores(props) {
     // Si tienen los mismos sets ganados, calcula los juegos ganados de cada jugador
     const gamesGanadosA = contarJuegosGanados(a.id, partidos);
     const gamesGanadosB = contarJuegosGanados(b.id, partidos);
-
     // Ordena según los juegos ganados
     return gamesGanadosB - gamesGanadosA;
   });
+
+  console.log(jugadoresOrdenados);
 
   return (
     <table>
@@ -42,6 +53,7 @@ function TablaJugadores(props) {
           <td>PJ-PG-PP</td>
           <td>Sets-Games</td>
           <td>Puntos</td>
+          <td>Historial</td> {/* Nuevo encabezado de columna */}
         </tr>
       </thead>
 
@@ -100,6 +112,15 @@ function TablaJugadores(props) {
                 {setsGanados}/{gamesGanados}
               </td>
               <td>{puntos}</td>
+              <td className="td-Historial">
+                <button
+                  class="custom-btn"
+                  onClick={() =>
+                    buscarPartidosPorJugador(jugador.id, partidos, jugadores)
+                  }>
+                  Ver
+                </button>
+              </td>
             </tr>
           );
         })}
@@ -161,5 +182,52 @@ function contarSetsGanados(jugadorId, partidos) {
 
   return setsGanados;
 }
+
+const MySwal = withReactContent(Swal);
+const buscarPartidosPorJugador = (jugadorId, partidos, jugadores) => {
+  // Mapear IDs de jugadores a nombres
+  const nombresJugadores = {};
+  jugadores.forEach((jugador) => {
+    nombresJugadores[jugador.id] = jugador.nombre;
+  });
+
+  // Almacenar partidos relevantes
+  const partidosJugador = partidos.filter(
+    (partido) =>
+      partido.jugador1_id === jugadorId || partido.jugador2_id === jugadorId
+  );
+
+  // Crear contenido HTML del modal
+  const modalContent = (
+    <div className="head-to-head-modal">
+      {partidosJugador.map((partido, index) => (
+        <div key={index} className="match">
+          <div className="players">
+            {nombresJugadores[partido.jugador1_id]} vs{" "}
+            {nombresJugadores[partido.jugador2_id]}
+          </div>
+          <div>Fecha: {partido.fecha}</div>
+          <div>Resultado: {partido.resultado}</div>
+          <div>
+            Ganador:{" "}
+            {partido.id_jugador_ganador
+              ? nombresJugadores[partido.id_jugador_ganador]
+              : "Sin definir"}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // Mostrar modal
+  showSwal(modalContent);
+};
+
+const showSwal = (modalContent) => {
+  MySwal.fire({
+    title: "Historial de Partidos",
+    html: modalContent,
+  });
+};
 
 export default TablaJugadores;
