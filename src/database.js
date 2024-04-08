@@ -35,7 +35,7 @@ export const Database = [
       },
       {
         id: 9,
-        nombre: "Serghio Torrealba",
+        nombre: "Serghio Torreblanca",
       },
       {
         id: 10,
@@ -515,6 +515,18 @@ export const Database = [
         setGanadosJugador2: "1",
         fecha: 4,
         id_jugador_ganador: 20,
+      },
+      {
+        id: 36,
+        jugador1_id: 16,
+        jugador2_id: 13,
+        resultado: "6-4,7-5",
+        juegosGanadosJugador1: "13",
+        juegosGanadosJugador2: "9",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 4,
+        id_jugador_ganador: 16,
       },
     ],
   },
