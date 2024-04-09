@@ -5,38 +5,25 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function TablaJugadores(props) {
-  const { jugadores, partidos } = props;
-
-  const handleHistorialClick = (jugadorId) => {
-    // Aquí podrías abrir tu modal o hacer cualquier otra acción necesaria
-    console.log("Historial del jugador con ID:", jugadorId);
-    // Por ahora, solo establecemos el jugador seleccionado en el estado
-    setJugadorSeleccionado(jugadorId);
-  };
+  const { jugadores, partidos, fechasLibres } = props;
 
   const jugadoresOrdenados = jugadores.sort((a, b) => {
-    // Calcula los puntos de cada jugador
     const puntosA = calcularPuntosJugador(a, partidos);
     const puntosB = calcularPuntosJugador(b, partidos);
 
-    // Si los puntos son diferentes, ordena según los puntos
     if (puntosB !== puntosA) {
       return puntosB - puntosA;
     }
 
-    // Si tienen los mismos puntos, calcula los sets ganados de cada jugador
     const setsGanadosA = contarSetsGanados(a.id, partidos);
     const setsGanadosB = contarSetsGanados(b.id, partidos);
 
-    // Si los sets ganados son diferentes, ordena según los sets ganados
     if (setsGanadosB !== setsGanadosA) {
       return setsGanadosB - setsGanadosA;
     }
 
-    // Si tienen los mismos sets ganados, calcula los juegos ganados de cada jugador
     const gamesGanadosA = contarJuegosGanados(a.id, partidos);
     const gamesGanadosB = contarJuegosGanados(b.id, partidos);
-    // Ordena según los juegos ganados
     return gamesGanadosB - gamesGanadosA;
   });
 
@@ -50,7 +37,7 @@ function TablaJugadores(props) {
           <td>PJ-PG-PP</td>
           <td>Sets-Games</td>
           <td>Puntos</td>
-          <td>Historial</td> {/* Nuevo encabezado de columna */}
+          <td>Historial</td>
         </tr>
       </thead>
 
@@ -80,7 +67,7 @@ function TablaJugadores(props) {
 
           return (
             <tr key={jugador.id}>
-              <td>{index + 1}</td>
+              <td style={{ fontSize: "30px", color: "orange" }}>{index + 1}</td>
               <td>{jugador.nombre}</td>
               <td>
                 <div style={{ display: "flex" }}>
@@ -113,7 +100,12 @@ function TablaJugadores(props) {
                 <button
                   class="custom-btn"
                   onClick={() =>
-                    buscarPartidosPorJugador(jugador.id, partidos, jugadores)
+                    buscarPartidosPorJugador(
+                      jugador.id,
+                      partidos,
+                      jugadores,
+                      fechasLibres
+                    )
                   }>
                   Ver
                 </button>
@@ -181,24 +173,31 @@ function contarSetsGanados(jugadorId, partidos) {
 }
 
 const MySwal = withReactContent(Swal);
-const buscarPartidosPorJugador = (jugadorId, partidos, jugadores) => {
-  // Mapear IDs de jugadores a nombres
+const buscarPartidosPorJugador = (
+  jugadorId,
+  partidos,
+  jugadores,
+  fechasLibres
+) => {
   const nombresJugadores = {};
   jugadores.forEach((jugador) => {
     nombresJugadores[jugador.id] = jugador.nombre;
   });
 
-  // Almacenar partidos relevantes
-  const partidosJugador = partidos.filter(
-    (partido) =>
-      partido.jugador1_id === jugadorId || partido.jugador2_id === jugadorId
+  // Filtrar solo las fechas libres del jugador específico
+  const fechasLibresJugador = fechasLibres.filter(
+    (fechaLibre) => fechaLibre.idJugador === jugadorId
   );
 
-  // Crear contenido HTML del modal
   const modalContent = (
     <div className="head-to-head-modal">
-      {partidosJugador
-        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha)) // Ordenar los partidos por fecha
+      {partidos
+        .filter(
+          (partido) =>
+            partido.jugador1_id === jugadorId ||
+            partido.jugador2_id === jugadorId
+        )
+        .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
         .map((partido, index) => (
           <div key={index} className="match">
             <div className="players">
@@ -215,10 +214,15 @@ const buscarPartidosPorJugador = (jugadorId, partidos, jugadores) => {
             </div>
           </div>
         ))}
+      {fechasLibresJugador.map((fechaLibre, index) => (
+        <div key={`libre-${index}`} className="match libre">
+          <div className="players">Fecha Libre</div>
+          <div>Fecha: {fechaLibre.fecha}</div>
+        </div>
+      ))}
     </div>
   );
 
-  // Mostrar modal
   showSwal(modalContent);
 };
 

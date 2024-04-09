@@ -1,97 +1,75 @@
 import "./App.css";
-import TablaJugadores from "./components/tablaJugadores";
+import TablaJugadores from "./components/tablaJugadores"; // Cambié la importación para que coincida con el nombre del archivo
 import { Database } from "./database";
 
 function App() {
   return (
-    <div class="container">
-      <div class="navigation">
+    <div className="container">
+      <div className="navigation">
         <ul>
           <li>
             <a href="#">
-              <span class="icon">
+              <span className="icon">
                 <ion-icon name="logo-apple"></ion-icon>
               </span>
-              <span class="title">Tenis Puente SUR</span>
+              <span className="title">Tenis Puente SUR</span>{" "}
             </a>
           </li>
 
           <li>
             <a href="#">
-              <span class="icon">
+              <span className="icon">
                 <ion-icon name="home-outline"></ion-icon>
               </span>
-              <span class="title">Dashboard</span>
+              <span className="title">Dashboard</span>{" "}
             </a>
           </li>
 
           <li>
             <a href="#">
-              <span class="icon">
+              <span className="icon">
                 <ion-icon name="people-outline"></ion-icon>
               </span>
-              <span class="title">Proximos Partidos</span>
+              <span className="title">Proximos Partidos</span>{" "}
             </a>
           </li>
 
           <li>
             <a href="#">
-              <span class="icon">
+              <span className="icon">
                 <ion-icon name="chatbubble-outline"></ion-icon>
               </span>
-              <span class="title">Ranking</span>
+              <span className="title">Ranking</span>{" "}
             </a>
           </li>
         </ul>
       </div>
-
-      <div class="main">
-        <div class="topbar">
-          <div class="toggle">
+      <div className="main">
+        <div className="topbar">
+          <div className="toggle">
             <ion-icon name="menu-outline"></ion-icon>
           </div>
-
-          <div class="search">
-            <label>
-              <input type="text" placeholder="Search here" />
-              <ion-icon name="search-outline"></ion-icon>
-            </label>
-          </div>
-
-          <div class="user">
-            <img src="assets/imgs/customer01.jpg" alt="" />
+          <div className="user">
+            <img src="logo.jpg" alt="" />
           </div>
         </div>
-
-        <div class="cardBox">
-          <div class="card">
+        <div className="cardBox">
+          <div className="card">
             <div>
-              <div class="numbers">42</div>
-              <div class="cardName">Partidos Jugados</div>
+              <div className="numbers">{Database[0].partidos.length}</div>
+              <div className="cardName">Partidos Jugados</div>
             </div>
-
-            <div class="iconBx">
+            <div className="iconBx">
               <ion-icon name="eye-outline"></ion-icon>
             </div>
           </div>
-
-          <div class="card">
-            <div>
-              <div class="numbers">$100.000</div>
-              <div class="cardName">Monto Invertido</div>
-            </div>
-
-            <div class="iconBx">
-              <ion-icon name="cash-outline"></ion-icon>
-            </div>
-          </div>
         </div>
-
-        <div class="details">
-          <div class="recentOrders">
+        <div className="details">
+          <div className="recentOrders">
             <TablaJugadores
               jugadores={Database[0].jugadores}
               partidos={Database[0].partidos}
+              fechasLibres={Database[0].fechasLibres}
             />
           </div>
         </div>
