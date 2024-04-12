@@ -1,8 +1,23 @@
 import "./App.css";
+import React, { useState } from "react";
 import TablaJugadores from "./components/tablaJugadores"; // Cambié la importación para que coincida con el nombre del archivo
+import ProximasFechas from "./components/proximasFechas";
 import { Database } from "./database";
 
 function App() {
+  const [showRecentOrders, setShowRecentOrders] = useState(true);
+  const [showAnotherDiv, setShowAnotherDiv] = useState(false);
+
+  const toggleVisibility = (tab) => {
+    if (tab === "tabla-jugadores") {
+      setShowRecentOrders(true);
+      setShowAnotherDiv(false);
+    } else if (tab === "proximos-partidos") {
+      setShowRecentOrders(false);
+      setShowAnotherDiv(true);
+    }
+  };
+
   return (
     <div className="container">
       <div className="navigation">
@@ -54,7 +69,9 @@ function App() {
           </div>
         </div>
         <div className="cardBox">
-          <div className="card">
+          <div
+            className="card tabla-jugadores"
+            onClick={() => toggleVisibility("tabla-jugadores")}>
             <div>
               <div className="numbers">{Database[0].partidos.length}</div>
               <div className="cardName">Partidos Jugados</div>
@@ -63,13 +80,33 @@ function App() {
               <ion-icon name="eye-outline"></ion-icon>
             </div>
           </div>
+          <div
+            className="card proximos-partidos"
+            onClick={() => toggleVisibility("proximos-partidos")}>
+            <div>
+              <div className="cardName">Calendario</div>
+            </div>
+            <div className="iconBx">
+              <ion-icon name="eye-outline"></ion-icon>
+            </div>
+          </div>
         </div>
         <div className="details">
-          <div className="recentOrders">
+          <div
+            className="recentOrders"
+            style={{ display: showRecentOrders ? "block" : "none" }}>
             <TablaJugadores
               jugadores={Database[0].jugadores}
               partidos={Database[0].partidos}
               fechasLibres={Database[0].fechasLibres}
+            />
+          </div>
+          <div
+            className="nextMatch"
+            style={{ display: showAnotherDiv ? "block" : "none" }}>
+            <ProximasFechas
+              calendario={Database[0].calendario}
+              jugadores={Database[0].jugadores}
             />
           </div>
         </div>

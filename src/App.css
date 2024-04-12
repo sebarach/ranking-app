@@ -543,3 +543,77 @@ td {
 .match div {
   margin-bottom: 5px;
 }
+
+.card {
+  /* Estilos para centrar el contenido y ajustar el tamaño del texto */
+  display: inline !important;
+  text-align: center;
+}
+
+.card .cardName {
+  /* Estilos para la clase cardName dentro de la card */
+  font-size: 2.2em !important; /* Ajusta el tamaño de la fuente según lo necesario */
+  font-weight: bold; /* Pone el texto en negrita */
+}
+.custom-combobox {
+  position: relative;
+  display: inline-block;
+}
+.custom-select {
+  display: block;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  appearance: none; /* Oculta la flecha del select en Firefox */
+  -webkit-appearance: none; /* Oculta la flecha del select en WebKit */
+}
+/* Flecha personalizada */
+.custom-select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+/* Estilos para opciones */
+.custom-select option {
+  padding: 10px;
+}
+.versus {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.player {
+  text-align: center;
+  flex: 1;
+}
+
+.player:first-child {
+  border-right: 2px solid #ddd;
+}
+
+.player:last-child {
+  border-left: 2px solid #ddd;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #f3f3f3;
+}
+
+.separator {
+  font-size: 24px;
+  color: #777;
+  margin: 0 20px;
+}
