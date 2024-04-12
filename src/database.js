@@ -672,6 +672,18 @@ export const Database = [
         fecha: 5,
         id_jugador_ganador: 1,
       },
+      {
+        id: 49,
+        jugador1_id: 22,
+        jugador2_id: 6,
+        resultado: "6-4,6-4",
+        juegosGanadosJugador1: "12",
+        juegosGanadosJugador2: "8",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 4,
+        id_jugador_ganador: 22,
+      },
     ],
     fechasLibres: [
       {
@@ -755,6 +767,242 @@ export const Database = [
           {
             jugador1_id: 1,
             jugador2_id: 2,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 4,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 6,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 8,
+          },
+          {
+            jugador1_id: 9,
+            jugador2_id: 10,
+          },
+          {
+            jugador1_id: 11,
+            jugador2_id: 12,
+          },
+          {
+            jugador1_id: 13,
+            jugador2_id: 14,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 16,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 18,
+          },
+          {
+            jugador1_id: 19,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 22,
+            jugador2_id: 23,
+          },
+        ],
+      },
+      {
+        idFecha: 3,
+        partidos: [
+          {
+            jugador1_id: 1,
+            jugador2_id: 4,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 6,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 8,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 10,
+          },
+          {
+            jugador1_id: 9,
+            jugador2_id: 12,
+          },
+          {
+            jugador1_id: 11,
+            jugador2_id: 14,
+          },
+          {
+            jugador1_id: 13,
+            jugador2_id: 16,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 18,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 19,
+            jugador2_id: 23,
+          },
+          {
+            jugador1_id: 21,
+            jugador2_id: 22,
+          },
+        ],
+      },
+      {
+        idFecha: 4,
+        partidos: [
+          {
+            jugador1_id: 1,
+            jugador2_id: 6,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 8,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 10,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 12,
+          },
+          {
+            jugador1_id: 9,
+            jugador2_id: 14,
+          },
+          {
+            jugador1_id: 11,
+            jugador2_id: 16,
+          },
+          {
+            jugador1_id: 13,
+            jugador2_id: 18,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 23,
+          },
+          {
+            jugador1_id: 19,
+            jugador2_id: 21,
+          },
+          {
+            jugador1_id: 22,
+            jugador2_id: 2,
+          },
+        ],
+      },
+      {
+        idFecha: 5,
+        partidos: [
+          {
+            jugador1_id: 1,
+            jugador2_id: 10,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 12,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 14,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 16,
+          },
+          {
+            jugador1_id: 9,
+            jugador2_id: 8,
+          },
+          {
+            jugador1_id: 11,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 13,
+            jugador2_id: 23,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 21,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 2,
+          },
+          {
+            jugador1_id: 19,
+            jugador2_id: 4,
+          },
+          {
+            jugador1_id: 22,
+            jugador2_id: 6,
+          },
+        ],
+      },
+      {
+        idFecha: 6,
+        partidos: [
+          {
+            jugador1_id: 1,
+            jugador2_id: 12,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 14,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 16,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 18,
+          },
+          {
+            jugador1_id: 9,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 11,
+            jugador2_id: 23,
+          },
+          {
+            jugador1_id: 13,
+            jugador2_id: 21,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 2,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 4,
+          },
+          {
+            jugador1_id: 19,
+            jugador2_id: 6,
+          },
+          {
+            jugador1_id: 22,
+            jugador2_id: 8,
           },
         ],
       },
