@@ -24,7 +24,6 @@ body {
 
 .container {
   position: relative;
-  /* width: 100%; */
 }
 
 /* =============== Navigation ================ */
@@ -561,7 +560,7 @@ td {
 }
 .custom-select {
   display: block;
-  width: 400px;
+  width: 300px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
