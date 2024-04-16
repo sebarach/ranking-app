@@ -4,6 +4,7 @@ import { faBaseball } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useDownloadExcel } from "react-export-table-to-excel";
+import { Analytics } from "@vercel/analytics/react";
 
 function TablaJugadores(props) {
   const tableRef = useRef(null);

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TablaJugadores from "./components/tablaJugadores"; // Cambié la importación para que coincida con el nombre del archivo
 import ProximasFechas from "./components/proximasFechas";
 import { Database } from "./database";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [showRecentOrders, setShowRecentOrders] = useState(true);
