@@ -102,6 +102,7 @@ function App() {
               fechasLibres={Database[0].fechasLibres}
             />
           </div>
+          <Analytics />
           <div
             className="nextMatch"
             style={{ display: showAnotherDiv ? "block" : "none" }}>
