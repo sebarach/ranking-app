@@ -58,11 +58,14 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
           <div className="list-group">
             {freeDates.map((fechaLibre, index) => (
               <div key={index} className="list-group-item disabled">
-                Jugador Libre: [
-                {jugadores.find(
-                  (jugador) => jugador.id === fechaLibre.idJugador
-                )?.nombre || "Jugador no encontrado"}
-                <br />] <span style={{ color: "red" }}>PARTIDO PENDIENTE</span>{" "}
+                Jugador Libre:
+                <span
+                  style={{ color: "white", margin: "10px", fontSize: "30px" }}>
+                  {jugadores.find(
+                    (jugador) => jugador.id === fechaLibre.idJugador
+                  )?.nombre || "Jugador no encontrado"}
+                </span>{" "}
+                <br /> <span style={{ color: "red" }}>PARTIDO PENDIENTE</span>{" "}
                 -----
                 <span style={{ color: "green" }}>PARTIDO JUGADO</span>
               </div>
