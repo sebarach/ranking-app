@@ -109,6 +109,8 @@ function App() {
             <ProximasFechas
               calendario={Database[0].calendario}
               jugadores={Database[0].jugadores}
+              fechasLibres={Database[0].fechasLibres}
+              partidos={Database[0].partidos}
             />
           </div>
         </div>

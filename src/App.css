@@ -617,3 +617,15 @@ td {
   color: #777;
   margin: 0 20px;
 }
+.custom-select {
+  width: 200px; /* Ajusta el ancho según sea necesario */
+}
+
+.text-muted {
+  color: #6c757d !important; /* Color de texto atenuado de Bootstrap */
+}
+
+.list-group-item.disabled {
+  margin-top: 10px;
+  color: #f8f9fa;
+}
