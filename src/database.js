@@ -903,7 +903,7 @@ export const Database = [
       {
         id: 68,
         jugador1_id: 10,
-        jugador2_id: 2,
+        jugador2_id: 22,
         resultado: "6-0,6-0",
         juegosGanadosJugador1: "12",
         juegosGanadosJugador2: "0",
