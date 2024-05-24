@@ -1234,7 +1234,7 @@ export const Database = [
         setGanadosJugador1: "2",
         setGanadosJugador2: "0",
         fecha: 9,
-        id_jugador_ganador: 19,
+        id_jugador_ganador: 22,
       },
       {
         id: 96,
