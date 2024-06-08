@@ -1492,6 +1492,18 @@ export const Database = [
         fecha: 11,
         id_jugador_ganador: 19,
       },
+      {
+        id: 117,
+        jugador1_id: 23,
+        jugador2_id: 3,
+        resultado: "6-1,6-1",
+        juegosGanadosJugador1: "12",
+        juegosGanadosJugador2: "2",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 10,
+        id_jugador_ganador: 23,
+      },
     ],
     fechasLibres: [
       {
@@ -1998,7 +2010,7 @@ export const Database = [
           },
           {
             jugador1_id: 3,
-            jugador2_id: 22,
+            jugador2_id: 23,
           },
           {
             jugador1_id: 5,
