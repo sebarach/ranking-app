@@ -2265,7 +2265,7 @@ export const Database = [
           },
           {
             jugador1_id: 10,
-            jugador2_id: 21,
+            jugador2_id: 18,
           },
           {
             jugador1_id: 8,
@@ -2290,10 +2290,6 @@ export const Database = [
           {
             jugador1_id: 22,
             jugador2_id: 9,
-          },
-          {
-            jugador1_id: 4,
-            jugador2_id: 18,
           },
         ],
       },
