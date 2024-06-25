@@ -4,98 +4,122 @@ export const Database = [
       {
         id: 1,
         nombre: "Roberto Milan",
+        isActivo: true,
       },
       {
         id: 2,
         nombre: "Jose Icarte",
+        isActivo: false,
       },
       {
         id: 3,
         nombre: "Jorge Marambio",
+        isActivo: true,
       },
       {
         id: 4,
         nombre: "Marcos Salazar",
+        isActivo: true,
       },
       {
         id: 5,
         nombre: "Alvaro Gonzalez",
+        isActivo: true,
       },
       {
         id: 6,
         nombre: "Nabor Riquelme",
+        isActivo: true,
       },
       {
         id: 7,
         nombre: "Vikingo",
+        isActivo: true,
       },
       {
         id: 8,
         nombre: "Jona",
+        isActivo: true,
       },
       {
         id: 9,
         nombre: "Serghio Torreblanca",
+        isActivo: true,
       },
       {
         id: 10,
         nombre: "Claudio Acuna",
+        isActivo: true,
       },
       {
         id: 11,
         nombre: "Carlos del Pino",
+        isActivo: true,
       },
       {
         id: 12,
         nombre: "Fernando",
+        isActivo: false,
       },
       {
         id: 13,
         nombre: "Pablo Rodriguez",
+        isActivo: true,
       },
       {
         id: 14,
         nombre: "Sebastian",
+        isActivo: false,
       },
       {
         id: 15,
         nombre: "Jose Luis Santander",
+        isActivo: true,
       },
       {
         id: 16,
         nombre: "Nelson Loyola",
+        isActivo: true,
       },
       {
         id: 17,
         nombre: "Jose Galaz",
+        isActivo: true,
       },
       {
         id: 18,
         nombre: "Matias Perez",
+        isActivo: true,
       },
       {
         id: 19,
         nombre: "Matias Pizarro",
+        isActivo: true,
       },
       {
         id: 20,
         nombre: "Cesar Godoy",
+        isActivo: true,
       },
       {
         id: 21,
         nombre: "Sebastian Sepulveda",
+        isActivo: true,
       },
       {
         id: 22,
         nombre: "Reinaldo Riffo",
+        isActivo: true,
       },
       {
         id: 23,
         nombre: "Christian Vidal",
+        isActivo: false,
       },
       {
         id: 24,
         nombre: "Ninguno",
+        isActivo: false,
       },
     ],
 

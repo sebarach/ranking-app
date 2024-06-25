@@ -10,23 +10,31 @@ function TablaJugadores(props) {
   const tableRef = useRef(null);
   const { jugadores, partidos, fechasLibres } = props;
 
-  const jugadoresOrdenados = jugadores.sort((a, b) => {
-    const puntosA = calcularPuntosJugador(a, partidos);
-    const puntosB = calcularPuntosJugador(b, partidos);
+  const jugadoresActivos = jugadores.filter((jugador) => jugador.isActivo);
+
+  const partidosActivos = partidos.filter(
+    (partido) =>
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador1_id) &&
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador2_id)
+  );
+
+  const jugadoresOrdenados = jugadoresActivos.sort((a, b) => {
+    const puntosA = calcularPuntosJugador(a, partidosActivos);
+    const puntosB = calcularPuntosJugador(b, partidosActivos);
 
     if (puntosB !== puntosA) {
       return puntosB - puntosA;
     }
 
-    const setsGanadosA = contarSetsGanados(a.id, partidos);
-    const setsGanadosB = contarSetsGanados(b.id, partidos);
+    const setsGanadosA = contarSetsGanados(a.id, partidosActivos);
+    const setsGanadosB = contarSetsGanados(b.id, partidosActivos);
 
     if (setsGanadosB !== setsGanadosA) {
       return setsGanadosB - setsGanadosA;
     }
 
-    const gamesGanadosA = contarJuegosGanados(a.id, partidos);
-    const gamesGanadosB = contarJuegosGanados(b.id, partidos);
+    const gamesGanadosA = contarJuegosGanados(a.id, partidosActivos);
+    const gamesGanadosB = contarJuegosGanados(b.id, partidosActivos);
     return gamesGanadosB - gamesGanadosA;
   });
 
@@ -56,79 +64,87 @@ function TablaJugadores(props) {
         </thead>
 
         <tbody>
-          {jugadoresOrdenados.map((jugador, index) => {
-            const partidosJugados = partidos.filter(
-              (partido) =>
-                partido.jugador1_id === jugador.id ||
-                partido.jugador2_id === jugador.id
-            ).length;
+          {jugadoresOrdenados
+            .filter((jugador) => jugador.isActivo)
+            .map((jugador, index) => {
+              const partidosJugados = partidosActivos.filter(
+                (partido) =>
+                  partido.jugador1_id === jugador.id ||
+                  partido.jugador2_id === jugador.id
+              ).length;
 
-            const partidosGanados = partidos.filter(
-              (partido) => partido.id_jugador_ganador === jugador.id
-            ).length;
+              const partidosGanados = partidosActivos.filter(
+                (partido) => partido.id_jugador_ganador === jugador.id
+              ).length;
 
-            const partidosPerdidos = partidos.filter(
-              (partido) =>
-                (partido.jugador1_id === jugador.id &&
-                  partido.id_jugador_ganador !== jugador.id) ||
-                (partido.jugador2_id === jugador.id &&
-                  partido.id_jugador_ganador !== jugador.id)
-            ).length;
+              const partidosPerdidos = partidosActivos.filter(
+                (partido) =>
+                  (partido.jugador1_id === jugador.id &&
+                    partido.id_jugador_ganador !== jugador.id) ||
+                  (partido.jugador2_id === jugador.id &&
+                    partido.id_jugador_ganador !== jugador.id)
+              ).length;
 
-            const puntos = calcularPuntosJugador(jugador, partidos);
-            const gamesGanados = contarJuegosGanados(jugador.id, partidos);
-            const setsGanados = contarSetsGanados(jugador.id, partidos);
+              const puntos = calcularPuntosJugador(jugador, partidosActivos);
+              const gamesGanados = contarJuegosGanados(
+                jugador.id,
+                partidosActivos
+              );
+              const setsGanados = contarSetsGanados(
+                jugador.id,
+                partidosActivos
+              );
 
-            return (
-              <tr key={jugador.id}>
-                <td style={{ fontSize: "30px", color: "orange" }}>
-                  {index + 1}
-                </td>
-                <td>{jugador.nombre}</td>
-                <td>
-                  <div style={{ display: "flex" }}>
-                    {[...Array(partidosGanados)].map((_, i) => (
-                      <FontAwesomeIcon
-                        key={i}
-                        icon={faBaseball}
-                        style={{ color: "green", marginRight: "3px" }}
-                        className="fa-lg"
-                      />
-                    ))}
-                    {[...Array(partidosPerdidos)].map((_, i) => (
-                      <FontAwesomeIcon
-                        key={partidosGanados + i}
-                        icon={faBaseball}
-                        style={{ color: "red", marginRight: "3px" }}
-                        className="fa-lg"
-                      />
-                    ))}
-                  </div>
-                </td>
-                <td>
-                  {partidosJugados}/{partidosGanados}/{partidosPerdidos}
-                </td>
-                <td>
-                  {setsGanados}/{gamesGanados}
-                </td>
-                <td>{puntos}</td>
-                <td className="td-Historial">
-                  <button
-                    class="custom-btn"
-                    onClick={() =>
-                      buscarPartidosPorJugador(
-                        jugador.id,
-                        partidos,
-                        jugadores,
-                        fechasLibres
-                      )
-                    }>
-                    Ver
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+              return (
+                <tr key={jugador.id}>
+                  <td style={{ fontSize: "30px", color: "orange" }}>
+                    {index + 1}
+                  </td>
+                  <td>{jugador.nombre}</td>
+                  <td>
+                    <div style={{ display: "flex" }}>
+                      {[...Array(partidosGanados)].map((_, i) => (
+                        <FontAwesomeIcon
+                          key={i}
+                          icon={faBaseball}
+                          style={{ color: "green", marginRight: "3px" }}
+                          className="fa-lg"
+                        />
+                      ))}
+                      {[...Array(partidosPerdidos)].map((_, i) => (
+                        <FontAwesomeIcon
+                          key={partidosGanados + i}
+                          icon={faBaseball}
+                          style={{ color: "red", marginRight: "3px" }}
+                          className="fa-lg"
+                        />
+                      ))}
+                    </div>
+                  </td>
+                  <td>
+                    {partidosJugados}/{partidosGanados}/{partidosPerdidos}
+                  </td>
+                  <td>
+                    {setsGanados}/{gamesGanados}
+                  </td>
+                  <td>{puntos}</td>
+                  <td className="td-Historial">
+                    <button
+                      class="custom-btn"
+                      onClick={() =>
+                        buscarPartidosPorJugador(
+                          jugador.id,
+                          partidosActivos,
+                          jugadoresActivos,
+                          fechasLibres
+                        )
+                      }>
+                      Ver
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>
