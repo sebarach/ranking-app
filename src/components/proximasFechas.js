@@ -7,6 +7,16 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
   // Estado para almacenar las fechas libres para la fecha seleccionada
   const [freeDates, setFreeDates] = useState([]);
 
+  //filtrar jugadores activos
+  const jugadoresActivos = jugadores.filter((jugador) => jugador.isActivo);
+
+  // partidos
+  const partidosActivos = partidos.filter(
+    (partido) =>
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador1_id) &&
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador2_id)
+  );
+
   // Función para manejar el cambio de fecha seleccionada
   const handleDateChange = (event) => {
     const selectedDate = parseInt(event.target.value);
@@ -61,7 +71,7 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
                 Jugador Libre:
                 <span
                   style={{ color: "white", margin: "10px", fontSize: "30px" }}>
-                  {jugadores.find(
+                  {jugadoresActivos.find(
                     (jugador) => jugador.id === fechaLibre.idJugador
                   )?.nombre || "Jugador no encontrado"}
                 </span>{" "}
@@ -78,7 +88,7 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
           calendario
             .find((fecha) => fecha.idFecha === selectedDate)
             ?.partidos.map((partido, index) => {
-              const partidoJugado = partidos.find(
+              const partidoJugado = partidosActivos.find(
                 (p) =>
                   (p.jugador1_id === partido.jugador1_id &&
                     p.jugador2_id === partido.jugador2_id) ||
@@ -92,6 +102,18 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
               // Determinar el color de fondo
               const backgroundColor = jugado ? "green" : "red";
 
+              // Verificar si ambos jugadores están activos
+              const jugador1 = jugadores.find(
+                (jugador) => jugador.id === partido.jugador1_id
+              );
+              const jugador2 = jugadores.find(
+                (jugador) => jugador.id === partido.jugador2_id
+              );
+
+              if (!jugador1?.isActivo || !jugador2?.isActivo) {
+                return null; // No renderizar si alguno de los jugadores no está activo
+              }
+
               return (
                 <div
                   key={index}
@@ -99,17 +121,13 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
                   style={{ backgroundColor: backgroundColor }}>
                   <div className="player">
                     <div className="name">
-                      {jugadores.find(
-                        (jugador) => jugador.id === partido.jugador1_id
-                      )?.nombre || "Jugador no encontrado"}
+                      {jugador1 ? jugador1.nombre : "Jugador no encontrado"}
                     </div>
                   </div>
                   <div className="separator">VS</div>
                   <div className="player">
                     <div className="name">
-                      {jugadores.find(
-                        (jugador) => jugador.id === partido.jugador2_id
-                      )?.nombre || "Jugador no encontrado"}
+                      {jugador2 ? jugador2.nombre : "Jugador no encontrado"}
                     </div>
                   </div>
                 </div>
