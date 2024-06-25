@@ -9,6 +9,16 @@ function App() {
   const [showRecentOrders, setShowRecentOrders] = useState(true);
   const [showAnotherDiv, setShowAnotherDiv] = useState(false);
 
+  const jugadoresActivos = Database[0].jugadores.filter(
+    (jugador) => jugador.isActivo
+  );
+
+  const partidosActivos = Database[0].partidos.filter(
+    (partido) =>
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador1_id) &&
+      jugadoresActivos.some((jugador) => jugador.id === partido.jugador2_id)
+  );
+
   const toggleVisibility = (tab) => {
     if (tab === "tabla-jugadores") {
       setShowRecentOrders(true);
@@ -74,7 +84,7 @@ function App() {
             className="card tabla-jugadores"
             onClick={() => toggleVisibility("tabla-jugadores")}>
             <div>
-              <div className="numbers">{Database[0].partidos.length}</div>
+              <div className="numbers">{partidosActivos.length}</div>
               <div className="cardName">Partidos Jugados</div>
             </div>
             <div className="iconBx">
