@@ -19,54 +19,54 @@ function App() {
       jugadoresActivos.some((jugador) => jugador.id === partido.jugador2_id)
   );
 
-  // Obtener todas las combinaciones posibles de jugadores activos
-  const combinaciones = [];
-  for (let i = 0; i < jugadoresActivos.length; i++) {
-    for (let j = i + 1; j < jugadoresActivos.length; j++) {
-      combinaciones.push([jugadoresActivos[i].id, jugadoresActivos[j].id]);
-    }
-  }
+  // // Obtener todas las combinaciones posibles de jugadores activos
+  // const combinaciones = [];
+  // for (let i = 0; i < jugadoresActivos.length; i++) {
+  //   for (let j = i + 1; j < jugadoresActivos.length; j++) {
+  //     combinaciones.push([jugadoresActivos[i].id, jugadoresActivos[j].id]);
+  //   }
+  // }
 
-  //Encontrar las combinaciones que no se han enfrentado sin repeticiones
-  const noSeHanEnfrentado = [];
-  combinaciones.forEach(([jugador1, jugador2]) => {
-    const enfrentados = partidosActivos.some(
-      (partido) =>
-        (partido.jugador1_id === jugador1 &&
-          partido.jugador2_id === jugador2) ||
-        (partido.jugador1_id === jugador2 && partido.jugador2_id === jugador1)
-    );
-    if (!enfrentados) {
-      // Verificar si ya se ha registrado la combinación o su inversa
-      const existeInversa = noSeHanEnfrentado.some(
-        ([jug1, jug2]) =>
-          (jug1 === jugador1 && jug2 === jugador2) ||
-          (jug1 === jugador2 && jug2 === jugador1)
-      );
-      if (!existeInversa) {
-        noSeHanEnfrentado.push([jugador1, jugador2]);
-      }
-    }
-  });
+  // //Encontrar las combinaciones que no se han enfrentado sin repeticiones
+  // const noSeHanEnfrentado = [];
+  // combinaciones.forEach(([jugador1, jugador2]) => {
+  //   const enfrentados = partidosActivos.some(
+  //     (partido) =>
+  //       (partido.jugador1_id === jugador1 &&
+  //         partido.jugador2_id === jugador2) ||
+  //       (partido.jugador1_id === jugador2 && partido.jugador2_id === jugador1)
+  //   );
+  //   if (!enfrentados) {
+  //     // Verificar si ya se ha registrado la combinación o su inversa
+  //     const existeInversa = noSeHanEnfrentado.some(
+  //       ([jug1, jug2]) =>
+  //         (jug1 === jugador1 && jug2 === jugador2) ||
+  //         (jug1 === jugador2 && jug2 === jugador1)
+  //     );
+  //     if (!existeInversa) {
+  //       noSeHanEnfrentado.push([jugador1, jugador2]);
+  //     }
+  //   }
+  // });
 
-  //Mostrar los resultados ordenados
-  noSeHanEnfrentado.forEach(([jugador1, jugador2]) => {
-    // Encontrar los nombres de los jugadores
-    const nombreJugador1 = jugadoresActivos.find(
-      (jugador) => jugador.id === jugador1
-    ).nombre;
-    const nombreJugador2 = jugadoresActivos.find(
-      (jugador) => jugador.id === jugador2
-    ).nombre;
+  // //Mostrar los resultados ordenados
+  // noSeHanEnfrentado.forEach(([jugador1, jugador2]) => {
+  //   // Encontrar los nombres de los jugadores
+  //   const nombreJugador1 = jugadoresActivos.find(
+  //     (jugador) => jugador.id === jugador1
+  //   ).nombre;
+  //   const nombreJugador2 = jugadoresActivos.find(
+  //     (jugador) => jugador.id === jugador2
+  //   ).nombre;
 
-    //Determinar el orden ascendente por IDs
-    const idJugador1 = Math.min(jugador1, jugador2);
-    const idJugador2 = Math.max(jugador1, jugador2);
+  //   //Determinar el orden ascendente por IDs
+  //   const idJugador1 = Math.min(jugador1, jugador2);
+  //   const idJugador2 = Math.max(jugador1, jugador2);
 
-    console.log(
-      `${nombreJugador1} (ID: ${idJugador1}) y ${nombreJugador2} (ID: ${idJugador2}) no se han enfrentado.`
-    );
-  });
+  //   console.log(
+  //     `${nombreJugador1} (ID: ${idJugador1}) y ${nombreJugador2} (ID: ${idJugador2}) no se han enfrentado.`
+  //   );
+  // });
 
   const toggleVisibility = (tab) => {
     if (tab === "tabla-jugadores") {
