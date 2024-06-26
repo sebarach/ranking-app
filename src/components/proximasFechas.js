@@ -78,6 +78,9 @@ function ProximasFechas({ calendario, jugadores, fechasLibres, partidos }) {
                 <br /> <span style={{ color: "red" }}>PARTIDO PENDIENTE</span>{" "}
                 -----
                 <span style={{ color: "green" }}>PARTIDO JUGADO</span>
+                <strong>
+                  <p>Del 26-06 al 03-07</p>
+                </strong>
               </div>
             ))}
           </div>
