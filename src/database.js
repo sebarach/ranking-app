@@ -1843,7 +1843,7 @@ export const Database = [
         fecha: 15,
       },
       {
-        idJugador: 24,
+        idJugador: 3,
         fecha: 16,
       },
     ],
