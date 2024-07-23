@@ -1948,6 +1948,54 @@ export const Database = [
         fecha: 12,
         id_jugador_ganador: 15,
       },
+      {
+        id: 151,
+        jugador1_id: 18,
+        jugador2_id: 20,
+        resultado: "2-6,7-6,6-2",
+        juegosGanadosJugador1: "14",
+        juegosGanadosJugador2: "14",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "1",
+        fecha: 17,
+        id_jugador_ganador: 18,
+      },
+      {
+        id: 152,
+        jugador1_id: 4,
+        jugador2_id: 10,
+        resultado: "7-6,6-1",
+        juegosGanadosJugador1: "13",
+        juegosGanadosJugador2: "7",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 17,
+        id_jugador_ganador: 4,
+      },
+      {
+        id: 153,
+        jugador1_id: 17,
+        jugador2_id: 22,
+        resultado: "6-0,6-0",
+        juegosGanadosJugador1: "12",
+        juegosGanadosJugador2: "0",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 15,
+        id_jugador_ganador: 17,
+      },
+      {
+        id: 154,
+        jugador1_id: 4,
+        jugador2_id: 7,
+        resultado: "6-0,6-0",
+        juegosGanadosJugador1: "12",
+        juegosGanadosJugador2: "0",
+        setGanadosJugador1: "2",
+        setGanadosJugador2: "0",
+        fecha: 16,
+        id_jugador_ganador: 4,
+      },
     ],
     fechasLibres: [
       {
@@ -2818,6 +2866,51 @@ export const Database = [
           {
             jugador1_id: 9,
             jugador2_id: 15,
+          },
+        ],
+      },
+      {
+        idFecha: 18,
+        partidos: [
+          {
+            jugador1_id: 1,
+            jugador2_id: 9,
+          },
+          {
+            jugador1_id: 21,
+            jugador2_id: 8,
+          },
+          {
+            jugador1_id: 10,
+            jugador2_id: 20,
+          },
+          {
+            jugador1_id: 18,
+            jugador2_id: 22,
+          },
+          {
+            jugador1_id: 16,
+            jugador2_id: 19,
+          },
+          {
+            jugador1_id: 3,
+            jugador2_id: 13,
+          },
+          {
+            jugador1_id: 7,
+            jugador2_id: 11,
+          },
+          {
+            jugador1_id: 15,
+            jugador2_id: 13,
+          },
+          {
+            jugador1_id: 5,
+            jugador2_id: 22,
+          },
+          {
+            jugador1_id: 17,
+            jugador2_id: 9,
           },
         ],
       },
