@@ -19,13 +19,13 @@ function App() {
       jugadoresActivos.some((jugador) => jugador.id === partido.jugador2_id)
   );
 
-  // // Obtener todas las combinaciones posibles de jugadores activos
-  // const combinaciones = [];
-  // for (let i = 0; i < jugadoresActivos.length; i++) {
-  //   for (let j = i + 1; j < jugadoresActivos.length; j++) {
-  //     combinaciones.push([jugadoresActivos[i].id, jugadoresActivos[j].id]);
-  //   }
-  // }
+  // Obtener todas las combinaciones posibles de jugadores activos
+  const combinaciones = [];
+  for (let i = 0; i < jugadoresActivos.length; i++) {
+    for (let j = i + 1; j < jugadoresActivos.length; j++) {
+      combinaciones.push([jugadoresActivos[i].id, jugadoresActivos[j].id]);
+    }
+  }
 
   // //Encontrar las combinaciones que no se han enfrentado sin repeticiones
   // const noSeHanEnfrentado = [];
