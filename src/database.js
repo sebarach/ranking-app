@@ -2369,18 +2369,6 @@ export const Database = [
         id_jugador_ganador: 9,
       },
       {
-        id: 185,
-        jugador1_id: 9,
-        jugador2_id: 7,
-        resultado: "6-0,6-0",
-        juegosGanadosJugador1: "12",
-        juegosGanadosJugador2: "0",
-        setGanadosJugador1: "2",
-        setGanadosJugador2: "0",
-        fecha: 19,
-        id_jugador_ganador: 9,
-      },
-      {
         id: 186,
         jugador1_id: 17,
         jugador2_id: 7,
